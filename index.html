@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+
+<style>
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #f4f6fb;
+  color: #111;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 50px;
+  background: #fff;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #555;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 50px;
+  gap: 40px;
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.tag {
+  color: #ff4d4d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-content h1 {
+  font-size: 40px;
+  margin: 15px 0;
+}
+
+.hero-content h1 span {
+  color: #ff4d4d;
+}
+
+.hero-content p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* ================= SKILLS (NEW STYLE) ================= */
+.skills {
+  padding: 70px 50px;
+  background: #fff;
+}
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.skills-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.skills-header p {
+  font-size: 15px;
+  color: #666;
+  max-width: 400px;
+}
+
+/* SKILL CARDS */
+.skills-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.skill-box {
+  background: #f8f9fd;
+  padding: 30px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-6px);
+}
+
+.skill-icon {
+  font-size: 28px;
+  font-weight: 700;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff4d4d, #ff7a7a);
+  color: #fff;
+}
+
+.skill-box h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .skills {
+    padding: 50px 20px;
+  }
+
+  .skills-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .skills-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .skills-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* ================= PROJECTS ================= */
+.projects {
+  padding: 70px 50px;
+  background: #f4f6fb;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.projects-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.projects-header p {
+  font-size: 15px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* CARD */
+.project-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* IMAGE */
+.project-image {
+  height: 170px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.08);
+}
+
+/* CONTENT */
+.project-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* TECH STACK */
+.tech-stack {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.tech-stack span {
+  background: #f4f6fb;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* LINKS */
+.project-links {
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff4d4d;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .projects {
+    padding: 50px 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">Portfolio</div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Portfolio</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <button class="btn btn-primary">Hire Me</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="tag">Frontend Developer</span>
+    <h1>I'm Developer <br><span>Divya Jadhav</span></h1>
+    <p>
+      I build clean, responsive and scalable web applications
+      with strong fundamentals and modern technologies.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn btn-primary">Hire Me</button>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="../download.jpg" alt="Profile Image" width="380">
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills">
+  <div class="skills-header">
+    <h2>Core Skills</h2>
+    
+  </div>
+
+  <div class="skills-row">
+    <div class="skill-box">
+      <div class="skill-icon">H</div>
+      <h4>HTML</h4>
+    </div>
+
+    <div class="skill-box">
+      <div class="skill-icon">C</div>
+      <h4>CSS</h4>
+    </div>
+
+    <div class="skill-box">
+      <div class="skill-icon">JS</div>
+      <h4>JavaScript</h4>
+    </div>
+
+    <div class="skill-box">
+      <div class="skill-icon">J</div>
+      <h4>Java</h4>
+    </div>
+  </div>
+</section>
+<!-- PROJECTS -->
+<section class="projects">
+  <div class="projects-header">
+    <h2>My Projects</h2>
+    <p>
+      Here are some of the real-world projects I have built
+      using modern web technologies.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-image">
+        <img src="../download (1).jpg" alt="Online Book Store">
+      </div>
+      <h3>Online Book Store</h3>
+      <p>
+        A mini e-commerce web application with product listing,
+        cart functionality and checkout page.
+      </p>
+      <div class="tech-stack">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+      </div>
+      <div class="project-links">
+        <a href="#">Live Demo</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-image">
+        <img src="../lead.png" alt="Lead Management System">
+      </div>
+      <h3>Lead Management System</h3>
+      <p>
+        A CRM-based lead management module to track, update
+        and manage customer leads efficiently.
+      </p>
+      <div class="tech-stack">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Java</span>
+      </div>
+      <div class="project-links">
+        <a href="#">Live Demo</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <div class="project-image">
+        <img src="../img1.jpeg" alt="Camera to Cloud Gallery">
+      </div>
+      <h3>Camera to Cloud Gallery</h3>
+      <p>
+        A live gallery system that uploads camera images
+        directly to cloud storage and displays them in real-time.
+      </p>
+      <div class="tech-stack">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+      </div>
+      <div class="project-links">
+        <a href="#">Live Demo</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+</body>
+</html>
